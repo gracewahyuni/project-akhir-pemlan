@@ -98,17 +98,6 @@ ProjectQueueTaskManager/
 
 ---
 
-## 📚 Modul & Pembagian Tugas (Opsional)
-
-| Nama Tim       | Modul                      | Tugas                                                                 |
-|----------------|----------------------------|-----------------------------------------------------------------------|
-| Gefi           | TaskTree, MemberService    | Struktur tree, penambahan & penghapusan tugas                        |
-| Teman A        | UndoRedoManager            | Stack untuk undo & redo, integrasi ke member                         |
-| Teman B        | ActivityLog, AdminService  | Double linked list, fitur search dan sort log aktivitas              |
-| Teman C        | QueueRole, Main.java       | Antrian role, integrasi alur utama program                           |
-
----
-
 ## 🧠 Catatan Teknis
 
 - Undo/Redo menggunakan `Stack<UserAction>`
