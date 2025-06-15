@@ -1,143 +1,156 @@
-# 📌 Queue Task Manager
+# 🎓 Java Project: Sistem Antrian Role dengan Manajemen Tugas
 
-**Queue Task Manager** adalah aplikasi berbasis Java yang mensimulasikan sistem antrian (queue) berbasis peran (role) dengan fitur manajemen tugas menggunakan struktur data **tree**, **stack**, **queue**, dan **double linked list**. Aplikasi ini memiliki fitur khusus untuk masing-masing role: member dan admin.
+## 📌 Deskripsi Singkat
+
+Program ini adalah aplikasi berbasis **Java Console** yang mensimulasikan sistem manajemen tugas dengan role **berbasis antrian (queue)** dan fitur seperti **pengelolaan tree tugas**, **undo/redo**, serta **log aktivitas**.
+
+Terdapat tiga role:
+
+1. `member1`
+2. `member2`
+3. `admin` (management role)
+
+Program dijalankan secara **FIFO (First In First Out)** berdasarkan role yang masuk ke dalam queue.
 
 ---
 
-## 🚀 Tujuan
+## ⚙️ Fitur Utama
 
-Membuat aplikasi simulasi manajemen tugas berbasis antrian dengan kemampuan untuk menambah, menghapus, melihat tugas secara hirarkis (tree), serta melakukan **undo/redo**. Untuk admin, tersedia fitur untuk melihat **log aktivitas** yang bisa di-*search* dan di-*sort*.
+### ✅ Untuk Member (`member1`, `member2`)
 
----
+Saat giliran member aktif, mereka memiliki 8 pilihan menu:
 
-## 🧩 Fitur Utama
-
-### 👥 Role-based Flow
-- Sistem berjalan dengan antrian: **member1 → member2 → admin**
-- Setiap role menjalankan aksi berdasarkan menu yang tersedia
-- Setelah `exit`, antrian berpindah ke role selanjutnya
-
-### 👤 Member Menu (member1, member2)
-1. **Lihat Tugas** → Menampilkan tree tugas
-2. **Tambah Tugas** → Menambah task ke tree berdasarkan parent
-3. **Hapus Tugas** → Menghapus task dari tree
-4. **Undo** → Membatalkan aksi terakhir
-5. **Redo** → Mengembalikan aksi yang di-undo
-6. **Exit** → Keluar dari sesi dan lanjut ke antrian berikutnya
-
-### 🛠 Tree Tugas
-Contoh tampilan struktur tree saat user memilih “Lihat Tugas”:
 ```
-1. Pemlan
-    - Quiz
-        > Quiz 1
-        > Quiz 2
-2. Pemweb
-    - Quiz
-    - Project
+1. Lihat tugas
+2. Tambah tugas
+3. Hapus tugas
+4. Cari tugas berdasarkan nama
+5. Sorting tugas berdasarkan prioritas
+6. Undo
+7. Redo
+8. Exit
 ```
 
-### 🔁 Undo/Redo
-- Menggunakan dua stack
-- Setiap aksi tambah/hapus dicatat dan bisa dibatalkan/dikembalikan
-- Menampilkan “Belum ada perubahan” jika tidak ada aksi
+- **Lihat tugas**: menampilkan struktur data tugas dalam format tree:
 
-### 👨‍💼 Admin Menu
-1. **Lihat Log Aktivitas**
-    - **Search** → Cari log berdasarkan kata kunci
-    - **Sort** → Urutkan log berdasarkan waktu
-    - **Exit** → Kembali ke menu utama
-2. **Exit** → Keluar dari aplikasi
+  ```
+  1. pemlan
+     - quiz
+        > quiz 1
+        > quiz 2
+  2. pemweb
+     - Quiz
+     - Project
+  ```
 
-### 📊 Log Aktivitas
-- Disimpan dalam **Double Linked List**
-- Format tabel:
+- **Tambah tugas**: pengguna memilih di mana tugas akan ditambahkan.
+- **Hapus tugas**: pengguna memilih nama tugas yang ingin dihapus.
+- **Cari tugas**: mencari tugas berdasarkan nama menggunakan traversal tree.
+- **Sorting tugas**: menyortir anak-anak dari node tertentu berdasarkan prioritas.
+- **Undo/Redo**: mengembalikan atau mengulangi aksi terakhir yang dilakukan (tambah/hapus).
+- **Exit**: melanjutkan giliran ke role berikutnya.
+
+### 🔐 Untuk Admin
+
+Admin hanya memiliki dua opsi:
+
+```
+1. Lihat log aktivitas
+2. Exit
+```
+
+- **Lihat log aktivitas**: menampilkan semua aktivitas yang dilakukan oleh member sebelumnya dalam format tabel:
+
 ```
 +------------+----------+------------------------+-------------+
 |   Waktu    |  Nama    |         Aksi           |   Detail    |
 +------------+----------+------------------------+-------------+
 | 10:00:01   | member1  | Menambahkan tugas      | quiz 3      |
 | 10:02:15   | member2  | Menghapus tugas        | Project     |
+| 10:03:10   | member1  | Undo                   | quiz 3      |
++------------+----------+------------------------+-------------+
+```
+
+Setelah admin `exit`, program akan berhenti jika queue role sudah kosong.
+
+---
+
+## 🗂️ Struktur Folder
+
+```
+TaskManager/
+│
+├── Main.java                  // Entry point program
+├── App.java                   // Mengelola queue dan alur utama
+│
+├── models/
+│   ├── TaskNode.java          // Struktur node dalam tree
+│   ├── TaskTree.java          // Operasi tree: add, delete, search, sort
+│   └── Action.java            // Menyimpan informasi undo/redo
+│
+├── services/
+│   ├── MemberService.java     // Menyediakan menu dan aksi untuk member
+│   ├── AdminService.java      // Menu log untuk admin
+│   └── HistoryManager.java    // Stack undo/redo
+│
+├── utils/
+│   ├── Logger.java            // Menulis dan menampilkan log aktivitas
+│   └── InputUtil.java         // Utilitas input scanner, validasi, dsb.
 ```
 
 ---
 
-## 📁 Struktur Folder
+## 🧠 Struktur Data
+
+- **Antrian (Queue):** untuk menyimpan giliran member
+- **Tree (TaskTree):** untuk menyimpan struktur tugas
+- **Stack (Undo/Redo):** menyimpan aksi perubahan
+- **ArrayList (Log):** menyimpan riwayat aktivitas
+
+---
+
+## 🧪 Contoh Alur Eksekusi
 
 ```
-ProjectQueueTaskManager/
-├── src/
-│   ├── Main.java
-│   ├── models/
-│   │   ├── Role.java
-│   │   ├── TaskNode.java
-│   │   ├── LogEntry.java
-│   │   └── UserAction.java
-│   ├── structures/
-│   │   ├── TaskTree.java
-│   │   ├── QueueRole.java
-│   │   ├── ActivityLog.java
-│   │   ├── UndoRedoManager.java
-│   └── services/
-│       ├── MemberService.java
-│       └── AdminService.java
-├── README.md
-└── .gitignore
-```
+Queue: [member1, member2, admin]
 
----
+→ member1 login
+→ tambah tugas "quiz 3" ke pemlan/quiz
+→ hapus tugas "quiz 1"
+→ undo (mengembalikan quiz 1)
+→ exit
 
-## 🛠️ Cara Menjalankan
+→ member2 login
+→ hapus tugas "project"
+→ exit
 
-1. Clone repository:
-   ```bash
-   git clone https://github.com/namamu/QueueTaskManager.git
-   ```
-2. Buka folder `src` di IDE seperti IntelliJ / VS Code
-3. Jalankan `Main.java`
+→ admin login
+→ lihat log aktivitas
+→ exit
 
----
-
-## 🧠 Catatan Teknis
-
-- Undo/Redo menggunakan `Stack<UserAction>`
-- Log disimpan dengan `DoubleLinkedList<LogEntry>`
-- Pencarian log pakai linear search
-- Pengurutan log bisa gunakan bubble/insertion sort
-
----
-
-## 🏁 Selesai Ketika
-
-- Semua role selesai dieksekusi
-- Queue kosong
-- Program menampilkan pesan selesai dan berhenti
-
----
-
-## 📌 Contoh Output Singkat
-
-```
-[INFO] Selamat datang member1
-[MENU]
-1. Lihat tugas
-2. Tambah tugas
-...
-
-[PILIHAN] 2
-Masukkan parent tugas: Pemlan
-Masukkan nama tugas: Quiz 3
-[SUKSES] Tugas berhasil ditambahkan
-
-[LOG]
-+----------+----------+------------------------+-----------+
-| 10:00:01 | member1  | Menambahkan tugas      | Quiz 3    |
-+----------+----------+------------------------+-----------+
+Program selesai.
 ```
 
 ---
 
-## 📬 Kontak
-Untuk pertanyaan atau kontribusi, silakan hubungi tim pengembang atau buka issue di repository ini.
+## 🛠️ Requirement
 
-_(Last updated: 2025-06-14)_
+- Java 8+
+- IDE seperti IntelliJ IDEA / VSCode / NetBeans
+- Command Line (untuk kompilasi manual)
+
+---
+
+## 💡 Catatan Tambahan
+
+- Semua operasi bersifat **berurutan per role**
+- Data tree bersifat **dinamis**
+- Undo/Redo hanya berlaku untuk penambahan dan penghapusan tugas
+- Log tidak dihapus, tetap tersimpan hingga akhir program
+
+---
+
+## ✍️ Kontributor
+
+- Ghefira Addien – Sistem & Ide
+- Liva (asisten AI) – Struktur & Dokumentasi
