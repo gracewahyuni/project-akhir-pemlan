@@ -1,6 +1,6 @@
-# 🎓 Java Project: Sistem Antrian Role dengan Manajemen Tugas
+# Java Project: Sistem Antrian Role dengan Manajemen Tugas
 
-## 📌 Deskripsi Singkat
+## Deskripsi Singkat
 
 Program ini adalah aplikasi berbasis **Java Console** yang mensimulasikan sistem manajemen tugas dengan role **berbasis antrian (queue)** dan fitur seperti **pengelolaan tree tugas**, **undo/redo**, serta **log aktivitas**.
 
@@ -16,7 +16,7 @@ Program dijalankan secara **FIFO (First In First Out)** berdasarkan role yang ma
 
 ## ⚙️ Fitur Utama
 
-### ✅ Untuk Member (`member1`, `member2`)
+### Untuk Member (`member1`, `member2`)
 
 Saat giliran member aktif, mereka memiliki 8 pilihan menu:
 
@@ -50,7 +50,7 @@ Saat giliran member aktif, mereka memiliki 8 pilihan menu:
 - **Undo/Redo**: mengembalikan atau mengulangi aksi terakhir yang dilakukan (tambah/hapus).
 - **Exit**: melanjutkan giliran ke role berikutnya.
 
-### 🔐 Untuk Admin
+### Untuk Admin
 
 Admin hanya memiliki dua opsi:
 
@@ -75,7 +75,7 @@ Setelah admin `exit`, program akan berhenti jika queue role sudah kosong.
 
 ---
 
-## 🗂️ Struktur Folder
+## Struktur Folder
 
 ```
 TaskManager/
@@ -100,7 +100,7 @@ TaskManager/
 
 ---
 
-## 🧠 Struktur Data
+## Struktur Data
 
 - **Antrian (Queue):** untuk menyimpan giliran member
 - **Tree (TaskTree):** untuk menyimpan struktur tugas
@@ -109,7 +109,7 @@ TaskManager/
 
 ---
 
-## 🧪 Contoh Alur Eksekusi
+## Contoh Alur Eksekusi
 
 ```
 Queue: [member1, member2, admin]
@@ -133,7 +133,7 @@ Program selesai.
 
 ---
 
-## 💡 Catatan Tambahan
+## Catatan Tambahan
 
 - Semua operasi bersifat **berurutan per role**
 - Data tree bersifat **dinamis**
