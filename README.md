@@ -133,14 +133,6 @@ Program selesai.
 
 ---
 
-## 🛠️ Requirement
-
-- Java 8+
-- IDE seperti IntelliJ IDEA / VSCode / NetBeans
-- Command Line (untuk kompilasi manual)
-
----
-
 ## 💡 Catatan Tambahan
 
 - Semua operasi bersifat **berurutan per role**
@@ -149,8 +141,3 @@ Program selesai.
 - Log tidak dihapus, tetap tersimpan hingga akhir program
 
 ---
-
-## ✍️ Kontributor
-
-- Ghefira Addien – Sistem & Ide
-- Liva (asisten AI) – Struktur & Dokumentasi
