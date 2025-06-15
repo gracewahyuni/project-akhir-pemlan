@@ -14,7 +14,7 @@ Program dijalankan secara **FIFO (First In First Out)** berdasarkan role yang ma
 
 ---
 
-## ⚙️ Fitur Utama
+## Fitur Utama
 
 ### Untuk Member (`member1`, `member2`)
 
